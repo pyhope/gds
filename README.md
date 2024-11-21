@@ -78,9 +78,10 @@ Several text and image files named will be generated as shown in `./example`
 
 `atomic_fraction.txt` records the atomic fraction of elements as a function of proximity (format: prox ele1 prox ele2 ...). `atomic_fraction_vs_proximity.png` is the plot of it. `prox.png` shows the density profile. `sum_proximity_0_0.txt` records the counts of atoms in each phase as well as the interface. The example is
 ```
-#  nw = 2.0 
+#  nw = 2 
 #  solid liquid interface 
-#  id O           Mg           Fe           W    chi
-0    224 164 543    2 99 199    2691 410 2368    8 1 9    0.0013
+#  id O           Mg           Fe           W          lw      chi
+0 824 1112 1422    3 980 493    5722 80 1724    57 6 77        6.1438    0.0615
+
 ```
 Here the three numbers below each element represent the counts of atoms in phase 1, phase 2, and interface, respectively. Note that the order `solid liquid interface ` shown in the second line may not be correct. You can check the numbers below `Fe` to identify the correct order. `lw` equals $nw \times w$, and the 3rd number for each element shows the number of atoms in an interface region with thickness `lw`. High `chi` means better fitting during the analysis (better Gibbs dividing surface).
