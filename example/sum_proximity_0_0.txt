@@ -1,0 +1,5 @@
+# /Users/yihangpeng/script/gds/example/merge.xyz 
+#  nw = 2 
+#  solid liquid interface 
+#  id O           Mg           Fe           W          lw      chi
+0 824 1112 1422    3 980 493    5722 80 1724    57 6 77        6.1438    0.0615

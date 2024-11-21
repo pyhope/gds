@@ -31,7 +31,7 @@ optional arguments:
 
 2. Convert the format from LAMMPS dump file to extended XYZ
 ```sh
-python similarity/dump2xyz.py Mg O Fe He
+python similarity/dump2xyz.py Mg O Fe W
 ```
 Usage:
 ```
@@ -54,7 +54,7 @@ optional arguments:
 ```sh
 python similarity/stat.py -nw 2 -m mass
 ```
-The theory can be found in Section 2.4 of Jie's recent preprint (https://doi.org/10.22541/essoar.171412549.91013860/v1). The only parameter that we need to adjust is `-nw`, which determines the scale of the assumed interface region. For example, if `nw` is 2, the metal phase is defined by $a_i > 2w$ and the oxide phase is defined by $a_i < 2w$, where $a_i$ is the proximity of ith atom to the interface, and $w$ is the thickness of the interface fitted by the model.
+The theory can be found in SI of Jie's recent paper (https://doi.org/10.1029/2024GL109793). The only parameter that we need to adjust is `-nw`, which determines the scale of the assumed interface region. For example, if `nw` is 2, the metal phase is defined by $a_i > 2w$ and the oxide phase is defined by $a_i < 2w$, where $a_i$ is the proximity of ith atom to the interface, and $w$ is the thickness of the interface fitted by the model.
 
 usage: 
 ```
@@ -74,11 +74,13 @@ optional arguments:
                         Default: must set!
   --mode MODE, -m MODE  Default: mass mode, k or mass, must set!
 ```
-A text file named `sum_proximity_0_0.txt` will be generated. It records the counts of atoms in each phase as well as the interface. The example is
+Several text and image files named will be generated as shown in `./example`
+
+`atomic_fraction.txt` records the atomic fraction of elements as a function of proximity (format: prox ele1 prox ele2 ...). `atomic_fraction_vs_proximity.png` is the plot of it. `prox.png` shows the density profile. `sum_proximity_0_0.txt` records the counts of atoms in each phase as well as the interface. The example is
 ```
-#  nw = 2 
+#  nw = 2.0 
 #  solid liquid interface 
-#  id O           Mg           Fe           W          lw      chi
-0 12 85 159    16 87 153    3571 0 525    11 0 5        5.8344    0.1540
+#  id O           Mg           Fe           W    chi
+0    224 164 543    2 99 199    2691 410 2368    8 1 9    0.0013
 ```
 Here the three numbers below each element represent the counts of atoms in phase 1, phase 2, and interface, respectively. Note that the order `solid liquid interface ` shown in the second line may not be correct. You can check the numbers below `Fe` to identify the correct order. `lw` equals $nw \times w$, and the 3rd number for each element shows the number of atoms in an interface region with thickness `lw`. High `chi` means better fitting during the analysis (better Gibbs dividing surface).
