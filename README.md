@@ -50,7 +50,7 @@ optional arguments:
                         Path for the output XYZ file (default: merge.xyz)
 ```
 
-3. Run the Gibbs dividing surface analysis.
+3. Run the Gibbs dividing surface analysis. You can try this step on an example `merge.xyz` file stored in `./example`.
 ```sh
 python similarity/stat.py -nw 2 -m mass
 ```
